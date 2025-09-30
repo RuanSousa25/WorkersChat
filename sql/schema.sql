@@ -1,4 +1,4 @@
-
+drop schema workers_chat cascade;
 create schema workers_chat;
 set search_path to workers_chat;
 
@@ -11,7 +11,7 @@ create table chat(
 	constraint fk_next foreign key (next_message) references chat(id)
 );
 
-create table worker(
+create table worker_entity(
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	message_id integer,
 	born_date TIMESTAMP default CURRENT_TIMESTAMP,
