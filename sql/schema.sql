@@ -2,13 +2,13 @@ drop schema workers_chat cascade;
 create schema workers_chat;
 set search_path to workers_chat;
 
-create table chat(
+create table chat_message(
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	message TEXT not null,
 	prev_message INTEGER,
 	next_message INTEGER,
-	constraint fk_prev foreign key (prev_message) references chat(id),
-	constraint fk_next foreign key (next_message) references chat(id)
+	constraint fk_prev foreign key (prev_message) references chat_message(id),
+	constraint fk_next foreign key (next_message) references chat_message(id)
 );
 
 create table worker_entity(
@@ -16,7 +16,7 @@ create table worker_entity(
 	message_id integer,
 	born_date TIMESTAMP default CURRENT_TIMESTAMP,
 	death_date TIMESTAMP,
-	constraint fk_message foreign key (message_id) references chat(id)
+	constraint fk_message foreign key (message_id) references chat_message(id)
 );
 
 create table word_types(
