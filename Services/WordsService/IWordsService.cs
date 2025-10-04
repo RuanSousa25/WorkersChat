@@ -1,8 +1,8 @@
 using WorkerTest.Models;
 
-namespace WorkerTest.Repositories.ChatRepository
+namespace WorkerTest.Services.WordsService
 {
-    public interface IWordsRepository
+    public interface IWordsService
     {
         Task<IEnumerable<Words>> GetWordsAsync();
     }
