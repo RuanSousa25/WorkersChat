@@ -4,6 +4,6 @@ namespace WorkerTest.Repositories.ChatRepository
 {
     public interface IWordsRepository
     {
-        Task<IEnumerable<Words>> GetWordsAsync();
+        Task<List<Words>> GetWordsAsync();
     }
 }

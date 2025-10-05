@@ -2,10 +2,10 @@ namespace WorkerTest.Models.Enums
 {
     public enum WordTypes
     {
-        Pronome,
-        Substantivo,
-        Verbo,
-        Adjetivo,
-        Adverbio 
+        Pronome = 1,
+        Substantivo = 2,
+        Verbo = 3,
+        Adjetivo = 4,
+        Adverbio = 5 
     }
 }

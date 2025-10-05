@@ -1,28 +1,26 @@
+using WorkerTest.Services.ChatService;
 using WorkerTest.Services.WordsService;
 
 namespace WorkerTest;
 
-public class Worker(ILogger<Worker> logger, IWordsService wordsService) : BackgroundService
+public class Worker(ILogger<Worker> logger, IChatService chatService) : BackgroundService
 {
     private readonly ILogger<Worker> _logger = logger;
-    private readonly IWordsService _wordsService = wordsService;
+    private readonly IChatService _chatService = chatService;
 
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        if (_logger.IsEnabled(LogLevel.Information))
+        {
+            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+        }
         while (!stoppingToken.IsCancellationRequested)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            }
 
-            var words = await _wordsService.GetWordsAsync();
 
-            foreach (var word in words)
-            {
-                Console.WriteLine($"Palavra: {word.Word}");
-            }
+            Console.WriteLine(await _chatService.GenerateMessageAsync());
+
             await Task.Delay(1000, stoppingToken);
         }
     }
