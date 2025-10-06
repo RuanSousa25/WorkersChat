@@ -3,7 +3,7 @@ using WorkerTest.Factory;
 using WorkerTest.Models;
 using WorkerTest.Scripts;
 
-namespace WorkerTest.Repositories.ChatRepository
+namespace WorkerTest.Repositories.WordsRepository
 {
     public class WordsRepository(IDbConnectionFactory connectionFactory) : IWordsRepository
     {

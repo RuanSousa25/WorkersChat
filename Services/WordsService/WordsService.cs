@@ -1,5 +1,6 @@
 using WorkerTest.Models;
 using WorkerTest.Repositories.ChatRepository;
+using WorkerTest.Repositories.WordsRepository;
 
 namespace WorkerTest.Services.WordsService
 {

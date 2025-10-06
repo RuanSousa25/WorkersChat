@@ -1,6 +1,6 @@
 using WorkerTest.Models;
 
-namespace WorkerTest.Repositories.ChatRepository
+namespace WorkerTest.Repositories.WordsRepository
 {
     public interface IWordsRepository
     {
