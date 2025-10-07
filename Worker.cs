@@ -21,7 +21,11 @@ public class Worker(ILogger<Worker> logger, IChatService chatService, IWorkerEnt
         {
             var worker = await _workerEntityService.CreateNewWorkerAsync();
             var message = await _chatService.GenerateMessageAsync();
-            Console.WriteLine($"Worker {worker.Id} (nascido em {worker.BornDate}) diz {message} ás {DateTime.UtcNow}");
+            worker.MessageId = message.Id;
+            worker.DeathDate = DateTime.UtcNow.ToLocalTime();
+            await _workerEntityService.UpdateWorkerAsync(worker);
+            Console.WriteLine($"Worker {worker.Id} (nascido em {worker.BornDate}) diz '{message.Message}' ás {DateTime.UtcNow.ToLocalTime()}");
+            
 
             await Task.Delay(1000, stoppingToken);
         }

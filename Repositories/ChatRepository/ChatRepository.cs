@@ -14,5 +14,18 @@ namespace WorkerTest.Repositories.ChatRepository
             var sql = ChatMessageScripts.SelectAllMessages;
             return await connection.QueryAsync<ChatMessage>(sql);
         }
+
+        public async Task<ChatMessage?> GetLastMessageAsync()
+        {
+            using var connection = _connectionFactory.CreateConnection();
+            var sql = ChatMessageScripts.SelectLastMessage;
+            return await connection.QuerySingleAsync<ChatMessage?>(sql);
+        }
+        public async Task<ChatMessage> InsertMessageAsync(ChatMessage message)
+        {
+            using var connection = _connectionFactory.CreateConnection();
+            var sql = ChatMessageScripts.InsertChatMessage;
+            return await connection.QuerySingleAsync<ChatMessage>(sql, message);
+        }
     }
 }

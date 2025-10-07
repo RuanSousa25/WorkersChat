@@ -8,9 +8,16 @@ namespace WorkerTest.Scripts
         ";
 
         public const string InsertChatMessage = @"
-            INSERT INTO chat_message(message, prev_message)
+            INSERT INTO workers_chat.chat_message(message, prev_message)
             VALUES (@Message, @PrevMessage)
-            RETURNG id;
+            RETURNING *;
+        ";
+
+        public const string SelectLastMessage = @"
+            SELECT cm.*
+            FROM workers_chat.chat_message cm
+            LEFT JOIN workers_chat.chat_message next ON cm.id = next.prev_message
+            WHERE next.id IS NULL;
         ";
 
     }

@@ -20,12 +20,7 @@ namespace WorkerTest.Services.ChatService
             throw new NotImplementedException();
         }
 
-        public async Task<ChatMessage> CreateChatMessageAsync(ChatMessage newMessage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<string> GenerateMessageAsync()
+        public async Task<ChatMessage> GenerateMessageAsync()
         {
             Random rand = new();
 
@@ -41,7 +36,14 @@ namespace WorkerTest.Services.ChatService
             var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo).ToList();
             var substantivo = substantivos[rand.Next(substantivos.Count)];
 
-            return $"{pronome.Word} {verbo.Word} {substantivo.Word}";
+            var lastMessage = _chatRepository.GetLastMessageAsync();
+
+            var newMessage = new ChatMessage
+            {
+                Message = $"{pronome.Word} {verbo.Word} {substantivo.Word}",
+                PrevMessage = lastMessage?.Id
+            };
+            return await _chatRepository.InsertMessageAsync(newMessage);
         }
     }
 }

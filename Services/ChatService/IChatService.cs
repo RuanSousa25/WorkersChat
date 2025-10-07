@@ -6,7 +6,7 @@ namespace WorkerTest.Services.ChatService
     {
         Task<List<ChatMessage>> GetAllChatMessagesAsync();
         Task<ChatMessage?> GetChatMessageByIdAsync(int id);
-        Task<string> GenerateMessageAsync();
+        Task<ChatMessage> GenerateMessageAsync();
 
     }
 }
