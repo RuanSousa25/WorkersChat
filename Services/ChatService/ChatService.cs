@@ -30,7 +30,7 @@ namespace WorkerTest.Services.ChatService
             var pronome = pronomes[rand.Next(pronomes.Count)];
 
 
-            var verbos = words.Where(w => w.WordType == WordTypes.Verbo).ToList();
+            var verbos = words.Where(w => w.WordType == WordTypes.Verbo && w.ConjugationGroup == pronome.ConjugationGroup).ToList();
             var verbo = verbos[rand.Next(verbos.Count)];
 
             var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo).ToList();

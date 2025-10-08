@@ -7,6 +7,7 @@ namespace WorkerTest.Models
         public int Id { get; set; }
         public string Word { get; set; } = "";
         public WordTypes WordType { get; set; }
+        public ConjugationGroup ConjugationGroup { get; set; }
 
     }
 }
