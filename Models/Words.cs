@@ -8,6 +8,8 @@ namespace WorkerTest.Models
         public string Word { get; set; } = "";
         public WordTypes WordType { get; set; }
         public ConjugationGroup ConjugationGroup { get; set; }
+        public GenderGroup GenderGroup { get; set; }
+        public TransitivityGroup TransitivityGroup { get; set; }
 
     }
 }

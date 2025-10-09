@@ -23,24 +23,31 @@ namespace WorkerTest.Services.ChatService
         public async Task<ChatMessage> GenerateMessageAsync()
         {
             Random rand = new();
+            var message = "";
 
             var words = await _wordsServices.GetWordsAsync();
 
             var pronomes = words.Where(w => w.WordType == WordTypes.Pronome).ToList();
             var pronome = pronomes[rand.Next(pronomes.Count)];
+            message += pronome.Word;
 
 
             var verbos = words.Where(w => w.WordType == WordTypes.Verbo && w.ConjugationGroup == pronome.ConjugationGroup).ToList();
             var verbo = verbos[rand.Next(verbos.Count)];
+            message += " " + verbo.Word;
 
-            var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo).ToList();
-            var substantivo = substantivos[rand.Next(substantivos.Count)];
+            if (verbo.TransitivityGroup != TransitivityGroup.Intransitivo)
+            {
+                var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo).ToList();
+                var substantivo = substantivos[rand.Next(substantivos.Count)];
+                message += " " + substantivo.Word;
+            }
 
             var lastMessage = _chatRepository.GetLastMessageAsync();
 
             var newMessage = new ChatMessage
             {
-                Message = $"{pronome.Word} {verbo.Word} {substantivo.Word}",
+                Message = message,
                 PrevMessage = lastMessage?.Id
             };
             return await _chatRepository.InsertMessageAsync(newMessage);
