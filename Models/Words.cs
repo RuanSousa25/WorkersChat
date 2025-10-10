@@ -10,6 +10,7 @@ namespace WorkerTest.Models
         public ConjugationGroup ConjugationGroup { get; set; }
         public GenderGroup GenderGroup { get; set; }
         public TransitivityGroup TransitivityGroup { get; set; }
+        public PredicativeGroup PredicativeGroup { get; set; }
 
     }
 }
