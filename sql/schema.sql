@@ -42,9 +42,9 @@ create table words(
 	word TEXT not null,
 	word_type_id integer not null default 2,
 	conjugation_group_id integer default 1,
-	gender_group_id integer default 1,
+	gender_group_id integer,
 	transitivity_group_id integer default 1,
-	predicative_group_id integer null,	
+	predicative_group_id integer,	
 	constraint fk_type foreign key (word_type_id) references word_types(id),
 	constraint fk_conjugation foreign key (conjugation_group_id) references conjugation_group(id),
 	constraint fk_gender foreign key (gender_group_id) references gender_group(id),
@@ -75,5 +75,16 @@ values
 ('engano', 3, 1, 1, 1), ('enganamos', 3, 2, 1, 1), ('engana', 3, 3, 1, 1), ('enganam', 3, 4, 1, 1),
 ('ajudo', 3, 1, 1, 1), ('ajudamos', 3, 2, 1, 1), ('ajuda', 3, 3, 1, 1), ('ajudam', 3, 4, 1, 1),
 ('sou', 3, 1, 3, 3), ('somos', 3, 2, 3, 3), ('é', 3, 3, 3, 3), ('são', 3, 4, 3, 3);
+
+insert into words(word, word_type_id, gender_group_id, conjugation_group_id, predicative_group_id)
+values
+('engenheira',2,2,1,3), ('engenheiras',2,2,2,3),
+('engenheire',2,1,1,3), ('engenheires',2,1,2,3),
+('engenheiro',2,3,1,3), ('engenheiros',2,3,2,3),
+('boa',2,2,1,3), ('boas',2,2,2,3),
+('boe',2,1,1,3), ('boes',2,1,2,3),
+('bom',2,3,1,3), ('bons',2,3,2,3),
+('estudante',2,null,1,3), ('estudantes',2,null,2,3),
+('feliz',2,null,1,3), ('felizes',2,null,2,3);
 
 

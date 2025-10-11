@@ -38,9 +38,18 @@ namespace WorkerTest.Services.ChatService
 
             if (verbo.TransitivityGroup != TransitivityGroup.Intransitivo)
             {
-                var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo).ToList();
+                var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo && w.PredicativeGroup == 0).ToList();
                 var substantivo = substantivos[rand.Next(substantivos.Count)];
                 message += " " + substantivo.Word;
+            }
+            else
+            {
+                var predicativos = words.Where(w =>
+                w.WordType == WordTypes.Substantivo &&
+                 w.PredicativeGroup == verbo.PredicativeGroup &&
+                 (pronome.GenderGroup == GenderGroup.NaoIdentificado || pronome.GenderGroup == w.GenderGroup)).ToList();
+                var predicativo = predicativos[rand.Next(predicativos.Count)];
+                message += " " + predicativo.Word;
             }
 
             var lastMessage = _chatRepository.GetLastMessageAsync();
