@@ -42,7 +42,7 @@ namespace WorkerTest.Services.ChatService
                 var substantivo = substantivos[rand.Next(substantivos.Count)];
                 message += " " + substantivo.Word;
             }
-            else
+            else if(verbo.PredicativeGroup != PredicativeGroup.Nenhum)
             {
                 var predicativos = words.Where(w =>
                 w.WordType == WordTypes.Substantivo &&
