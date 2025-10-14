@@ -31,8 +31,7 @@ namespace WorkerTest.Services.ChatService
             var pronome = pronomes[rand.Next(pronomes.Count)];
             message += pronome.Word;
 
-
-            var verbos = words.Where(w => w.WordType == WordTypes.Verbo && w.ConjugationGroup == pronome.ConjugationGroup).ToList();
+            var verbos = words.Where(w => w.WordType == WordTypes.Verbo && w.PersonGroup == pronome.PersonGroup && w.NumberGroup == pronome.NumberGroup).ToList();
             var verbo = verbos[rand.Next(verbos.Count)];
             message += " " + verbo.Word;
 
@@ -46,8 +45,10 @@ namespace WorkerTest.Services.ChatService
             {
                 var predicativos = words.Where(w =>
                 w.WordType == WordTypes.Substantivo &&
-                 w.PredicativeGroup == verbo.PredicativeGroup &&
-                 (pronome.GenderGroup == GenderGroup.NaoIdentificado || pronome.GenderGroup == w.GenderGroup)).ToList();
+                w.PredicativeGroup == verbo.PredicativeGroup &&
+                w.NumberGroup == pronome.NumberGroup &&
+                (pronome.GenderGroup == GenderGroup.NaoIdentificado || pronome.GenderGroup == w.GenderGroup)
+                ).ToList();
                 var predicativo = predicativos[rand.Next(predicativos.Count)];
                 message += " " + predicativo.Word;
             }

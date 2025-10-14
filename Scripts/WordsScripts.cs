@@ -6,7 +6,8 @@ namespace WorkerTest.Scripts
             SELECT id AS Id, 
             word AS Word,
              word_type_id AS WordType,
-              conjugation_group_id AS ConjugationGroup,
+              person_group_id AS PersonGroup,
+              number_group_id AS NumberGroup,
                gender_group_id AS GenderGroup,
                 transitivity_group_id AS TransitivityGroup,
                  predicative_group_id AS PredicativeGroup
