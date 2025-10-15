@@ -25,36 +25,23 @@ namespace WorkerTest.Services.ChatService
             Random rand = new();
             var message = "";
 
-            var words = await _wordsServices.GetWordsAsync();
+            var pronome = await _wordsServices.GetRandomPronomeAsync();
+            var verbo = await _wordsServices.GetRandomVerboByPronomeAsync(pronome);
 
-            var pronomes = words.Where(w => w.WordType == WordTypes.Pronome).ToList();
-            var pronome = pronomes[rand.Next(pronomes.Count)];
             message += pronome.Word;
-
-            var verbos = words.Where(w => w.WordType == WordTypes.Verbo && w.PersonGroup == pronome.PersonGroup && w.NumberGroup == pronome.NumberGroup).ToList();
-            var verbo = verbos[rand.Next(verbos.Count)];
             message += " " + verbo.Word;
 
             if (verbo.TransitivityGroup != TransitivityGroup.Intransitivo)
             {
-                var substantivos = words.Where(w => w.WordType == WordTypes.Substantivo && w.PredicativeGroup == 0).ToList();
-                var substantivo = substantivos[rand.Next(substantivos.Count)];
-                message += " " + substantivo.Word;
+                var objeto = await _wordsServices.GetRandomObjetoAsync();
+                message += " " + objeto.Word;
             }
-            else if(verbo.PredicativeGroup != PredicativeGroup.Nenhum)
+            else if (verbo.PredicativeGroup != PredicativeGroup.Nenhum)
             {
-                var predicativos = words.Where(w =>
-                w.WordType == WordTypes.Substantivo &&
-                w.PredicativeGroup == verbo.PredicativeGroup &&
-                w.NumberGroup == pronome.NumberGroup &&
-                (pronome.GenderGroup == GenderGroup.NaoIdentificado || pronome.GenderGroup == w.GenderGroup)
-                ).ToList();
-                var predicativo = predicativos[rand.Next(predicativos.Count)];
+                Words predicativo = await _wordsServices.GetRandomPredicativoAsync(pronome, verbo);
                 message += " " + predicativo.Word;
             }
-
             var lastMessage = _chatRepository.GetLastMessageAsync();
-
             var newMessage = new ChatMessage
             {
                 Message = message,
@@ -62,5 +49,7 @@ namespace WorkerTest.Services.ChatService
             };
             return await _chatRepository.InsertMessageAsync(newMessage);
         }
+        
+
     }
 }
