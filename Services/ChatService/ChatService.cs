@@ -24,29 +24,40 @@ namespace WorkerTest.Services.ChatService
         {
             Random rand = new();
             var message = "";
+            var outroPeriodo = false;
 
-            var pronome = await _wordsServices.GetRandomPronomeAsync();
-            var verbo = await _wordsServices.GetRandomVerboByPronomeAsync(pronome);
 
-            message += pronome.Word;
-            message += " " + verbo.Word;
-
-            if (verbo.TransitivityGroup != TransitivityGroup.Intransitivo)
+            do
             {
-                var objeto = await _wordsServices.GetRandomObjetoAsync();
-                message += " " + objeto.Word;
-            }
-            else if (verbo.PredicativeGroup != PredicativeGroup.Nenhum)
-            {
-                Words predicativo = await _wordsServices.GetRandomPredicativoAsync(pronome, verbo);
-                message += " " + predicativo.Word;
-            }
+                var pronome = await _wordsServices.GetRandomPronomeAsync();
+                var verbo = await _wordsServices.GetRandomVerboByPronomeAsync(pronome);
+
+                message += pronome.Word;
+                message += " " + verbo.Word;
+
+                if (verbo.TransitivityGroup != TransitivityGroup.Intransitivo)
+                {
+                    var objeto = await _wordsServices.GetRandomObjetoAsync();
+                    message += " " + objeto.Word;
+                }
+                else if (verbo.PredicativeGroup != PredicativeGroup.Nenhum)
+                {
+                    Words predicativo = await _wordsServices.GetRandomPredicativoAsync(pronome, verbo);
+                    message += " " + predicativo.Word;
+                }
+
+
+                outroPeriodo = rand.Next(4) == 1;
+                message += outroPeriodo ? ". " : ".";
+            } while (outroPeriodo);
+
             var lastMessage = _chatRepository.GetLastMessageAsync();
             var newMessage = new ChatMessage
             {
                 Message = message,
                 PrevMessage = lastMessage?.Id
             };
+
             return await _chatRepository.InsertMessageAsync(newMessage);
         }
         
