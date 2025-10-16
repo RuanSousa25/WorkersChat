@@ -6,6 +6,8 @@ namespace WorkerTest.Models.Enums
         Substantivo = 2,
         Verbo = 3,
         Adjetivo = 4,
-        Adverbio = 5 
+        Adverbio = 5,
+        Preposicao = 6,
+        Artigo = 7
     }
 }

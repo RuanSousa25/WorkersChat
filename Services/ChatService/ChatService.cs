@@ -38,12 +38,25 @@ namespace WorkerTest.Services.ChatService
                 if (verbo.TransitivityGroup != TransitivityGroup.Intransitivo)
                 {
                     var objeto = await _wordsServices.GetRandomObjetoAsync();
-                    message += " " + objeto.Word;
+                    var artigo = await _wordsServices.GetArtigoForSubstantivoAsync(objeto);
+                    message += $" {artigo?.Word ?? ""} {objeto.Word}";
                 }
                 else if (verbo.PredicativeGroup != PredicativeGroup.Nenhum)
                 {
+
                     Words predicativo = await _wordsServices.GetRandomPredicativoAsync(pronome, verbo);
-                    message += " " + predicativo.Word;
+                    if(predicativo.PredicativeGroup == PredicativeGroup.Nominal)
+                    {
+                        try
+                        {
+                            var artigo = await _wordsServices.GetArtigoForSubstantivoAsync(pronome);
+                            message += $" {artigo?.Word ?? ""} {predicativo.Word}";
+                        }catch(Exception e)
+                        {
+                            Console.WriteLine($"{pronome.Word} | {e.Message} {e.StackTrace}");
+                        }
+                    }else
+                        message += " " + predicativo.Word;
                 }
 
 

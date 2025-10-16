@@ -10,7 +10,8 @@ namespace WorkerTest.Scripts
               number_group_id AS NumberGroup,
                gender_group_id AS GenderGroup,
                 transitivity_group_id AS TransitivityGroup,
-                 predicative_group_id AS PredicativeGroup
+                 predicative_group_id AS PredicativeGroup,
+                 artigo_definido AS ArtigoDefinido
             FROM workers_chat.words        
         ";
     }

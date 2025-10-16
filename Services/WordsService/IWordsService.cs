@@ -9,5 +9,6 @@ namespace WorkerTest.Services.WordsService
         Task<Words> GetRandomVerboByPronomeAsync(Words pronome);
         Task<Words> GetRandomObjetoAsync();
         Task<Words> GetRandomPredicativoAsync(Words pronome, Words verbo);
+        Task<Words?> GetArtigoForSubstantivoAsync(Words objeto);
     }
 }

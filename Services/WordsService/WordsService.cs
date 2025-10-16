@@ -52,5 +52,19 @@ namespace WorkerTest.Services.WordsService
             ).ToList();
             return predicativos[rand.Next(predicativos.Count)];
         }
+
+        public async Task<Words?> GetArtigoForSubstantivoAsync(Words objeto)
+        {
+            //if (objeto.WordType != WordTypes.Substantivo) return null;
+            List<Words> words = await _wordsRepository.GetWordsAsync();
+            Random rand = new();
+            
+            var artigos = words.Where(w => w.WordType == WordTypes.Artigo
+             && (objeto.GenderGroup == GenderGroup.NaoIdentificado || w.GenderGroup == objeto.GenderGroup)
+              && w.NumberGroup == objeto.NumberGroup)
+              .ToList();
+            var artigo = artigos[rand.Next(artigos.Count)];
+            return artigo;
+        }
     }
 }
