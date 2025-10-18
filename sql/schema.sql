@@ -53,7 +53,8 @@ create table words(
 	number_group_id integer default 1,
 	gender_group_id integer,
 	transitivity_group_id integer default 1,
-	predicative_group_id integer,	
+	predicative_group_id integer,
+	artigo_definido boolean,
 	constraint fk_type foreign key (word_type_id) references word_types(id),
 	constraint fk_person foreign key (person_group_id) references person_group(id),
 	constraint fk_number foreign key (number_group_id) references number_group(id),
@@ -66,12 +67,12 @@ insert into transitivity_group(transitivity_group) values ('transitivo direto'),
 insert into person_group(person_group) values ('primeira'), ('terceira');
 insert into number_group(number_group) values ('singular'), ('plural');
 insert into gender_group(gender_group) values ('neutro'), ('feminino'), ('masculino');
-insert into word_types(word_type) values ('pronome'),('substantivo'), ('verbo'), ('adjetivo'), ('adverbio');
+insert into word_types(word_type) values ('pronome'),('substantivo'), ('verbo'), ('adjetivo'), ('adverbio'), ('preposicao'), ('artigo');
 
 insert into words(word, word_type_id, person_group_id, number_group_id, gender_group_id)
 values ('eu', 1, 1, 1, null), ('você', 1, 2, 1, null), ('vocês', 1, 2, 2, null),('nós', 1, 1, 2, null), ('elu', 1, 2, 1, 1),('ele', 1, 2, 1, 3), ('ela', 1, 2, 1, 2), ('elus', 1, 2, 2, 1),('eles', 1, 2, 2, 3), ('elas', 1, 2, 2, 2);
-insert into words(word, word_type_id) 
-values ('água', 2), ('máquinas', 2), ('humanos', 2), ('matemática', 2), ('computação', 2), ('ciência', 2), ('engenharia', 2), ('vida', 2), ('morte', 2);
+insert into words(word, word_type_id, number_group_id, gender_group_id) 
+values ('água', 2, 1, 2), ('máquinas', 2, 2, 2), ('humanos', 2, 2, 3), ('matemática', 2, 1, 2), ('computação', 2, 1, 2), ('ciência', 2, 1, 2), ('engenharia', 2, 1, 2), ('vida', 2, 1, 2), ('morte', 2, 1, 2);
 insert into words(word, word_type_id, person_group_id, number_group_id, transitivity_group_id, predicative_group_id)
 values 
 ('amo', 3, 1, 1, 1, 1), ('amamos', 3, 1, 2, 1, 1),  ('ama', 3, 2, 1, 1, 1),   ('amam', 3, 2, 2, 1, 1), 
@@ -86,6 +87,16 @@ values
 ('engano', 3, 1, 1, 1, 1), ('enganamos', 3, 1, 2, 1, 1), ('engana', 3, 2, 1, 1, 1), ('enganam', 3, 2, 2, 1, 1),
 ('ajudo', 3, 1, 1, 1, 1), ('ajudamos', 3, 1, 2, 1, 1), ('ajuda', 3, 2, 1, 1, 1), ('ajudam', 3, 2, 2, 1, 1),
 ('sou', 3, 1, 1, 3, 3), ('somos', 3, 1, 2, 3, 3), ('é', 3, 2, 1, 3, 3), ('são', 3,  2, 2, 3, 3);
+
+insert into words(word, word_type_id, number_group_id, gender_group_id, artigo_definido)
+values 
+('a', 7, 1, 2, true), ('as', 7, 2, 2, true),
+('e', 7, 1, 1, true), ('es', 7, 2, 1, true),
+('o', 7, 1, 3, true), ('os', 7, 2, 3, true),
+('uma', 7, 1, 2, false), ('umas', 7, 2, 2, false),
+('ume', 7, 1, 1, false), ('umes', 7, 2, 1, false),
+('um', 7, 1, 3, false), ('uns', 7, 2, 3, false);
+
 
 insert into words(word, word_type_id, gender_group_id,number_group_id, predicative_group_id)
 values
