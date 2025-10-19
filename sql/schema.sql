@@ -72,7 +72,9 @@ insert into word_types(word_type) values ('pronome'),('substantivo'), ('verbo'),
 insert into words(word, word_type_id, person_group_id, number_group_id, gender_group_id)
 values ('eu', 1, 1, 1, null), ('você', 1, 2, 1, null), ('vocês', 1, 2, 2, null),('nós', 1, 1, 2, null), ('elu', 1, 2, 1, 1),('ele', 1, 2, 1, 3), ('ela', 1, 2, 1, 2), ('elus', 1, 2, 2, 1),('eles', 1, 2, 2, 3), ('elas', 1, 2, 2, 2);
 insert into words(word, word_type_id, number_group_id, gender_group_id) 
-values ('água', 2, 1, 2), ('máquinas', 2, 2, 2), ('humanos', 2, 2, 3), ('matemática', 2, 1, 2), ('computação', 2, 1, 2), ('ciência', 2, 1, 2), ('engenharia', 2, 1, 2), ('vida', 2, 1, 2), ('morte', 2, 1, 2);
+values ('água', 2, 1, 2), ('máquinas', 2, 2, 2), ('humanos', 2, 2, 3), ('matemática', 2, 1, 2), ('computação', 2, 1, 2), ('ciência', 2, 1, 2), ('engenharia', 2, 1, 2), ('vida', 2, 1, 2), ('morte', 2, 1, 2),
+('morango', 2, 1, 3), ('morangos', 2, 2, 3),('uva', 2, 1, 2), ('uvas', 2, 2, 2),('goiaba', 2, 1, 2), ('goiabas', 2, 2, 2),('manga', 2, 1, 2), ('mangas', 2, 2, 2),
+('filme', 2, 1, 3), ('filmes', 2, 2, 3), ('série', 2, 1, 2), ('séries', 2, 2, 2), ('cinema', 2, 1, 3), ('folhas', 2, 2, 2);
 insert into words(word, word_type_id, person_group_id, number_group_id, transitivity_group_id, predicative_group_id)
 values 
 ('amo', 3, 1, 1, 1, 1), ('amamos', 3, 1, 2, 1, 1),  ('ama', 3, 2, 1, 1, 1),   ('amam', 3, 2, 2, 1, 1), 
@@ -86,7 +88,12 @@ values
 ('penso', 3, 1, 1, 1, 1), ('pensamos', 3, 1, 2, 1, 1), ('pensa', 3, 2, 1, 1, 1), ('pensam', 3, 2, 2, 1, 1),
 ('engano', 3, 1, 1, 1, 1), ('enganamos', 3, 1, 2, 1, 1), ('engana', 3, 2, 1, 1, 1), ('enganam', 3, 2, 2, 1, 1),
 ('ajudo', 3, 1, 1, 1, 1), ('ajudamos', 3, 1, 2, 1, 1), ('ajuda', 3, 2, 1, 1, 1), ('ajudam', 3, 2, 2, 1, 1),
-('sou', 3, 1, 1, 3, 3), ('somos', 3, 1, 2, 3, 3), ('é', 3, 2, 1, 3, 3), ('são', 3,  2, 2, 3, 3);
+('sou', 3, 1, 1, 3, 3), ('somos', 3, 1, 2, 3, 3), ('é', 3, 2, 1, 3, 3), ('são', 3,  2, 2, 3, 3),
+('como', 3, 1, 1, 1, 1), ('comemos', 3, 1, 2, 1, 1), ('come', 3, 2, 1, 1, 1), ('comem', 3, 2, 2, 1, 1),
+('gosto', 3, 1, 1, 2, 1), ('gostamos', 3, 1, 2, 2, 1), ('gosta', 3, 2, 1, 2, 1), ('gostam', 3, 2, 2, 2, 1),
+('assisto', 3, 1, 1, 2, 1), ('assistimos', 3, 1, 2, 2, 1), ('assiste', 3, 2, 1, 2, 1), ('assistem', 3, 2, 2, 2, 1),
+('faço', 3, 1, 1, 1, 1), ('fazemos', 3, 1, 2, 1, 1), ('faz', 3, 2, 1, 1, 1), ('fazem', 3, 2, 2, 1, 1),
+('colho', 3, 1, 1, 1, 1), ('colhemos', 3, 1, 2, 1, 1), ('colhe', 3, 2, 1, 1, 1), ('colhem', 3, 2, 2, 1, 1);
 
 insert into words(word, word_type_id, number_group_id, gender_group_id, artigo_definido)
 values 
