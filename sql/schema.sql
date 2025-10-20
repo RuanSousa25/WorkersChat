@@ -41,6 +41,10 @@ create table predicative_group(
 	predicative_group TEXT NOT NULL
 	);
 
+create table adverb_function_type(
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	adverb_function_type TEXT not null );
+
 create table word_types(
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	word_type TEXT not null );
@@ -55,18 +59,22 @@ create table words(
 	transitivity_group_id integer default 1,
 	predicative_group_id integer,
 	artigo_definido boolean,
+	adverb_function_type_id integer,
+	implicit_object boolean,
 	constraint fk_type foreign key (word_type_id) references word_types(id),
 	constraint fk_person foreign key (person_group_id) references person_group(id),
 	constraint fk_number foreign key (number_group_id) references number_group(id),
 	constraint fk_gender foreign key (gender_group_id) references gender_group(id),
 	constraint fk_transitivity foreign key (transitivity_group_id) references transitivity_group(id),
-	constraint fk_predicative foreign key (predicative_group_id) references predicative_group(id)
+	constraint fk_predicative foreign key (predicative_group_id) references predicative_group(id),
+	constraint fk_adverd_function foreign key (adverb_function_type_id) references adverb_function_type(id)
 );
 insert into predicative_group(predicative_group) values ('nenhum'),('verbal'), ('nominal'), ('verbo-nominal');
 insert into transitivity_group(transitivity_group) values ('transitivo direto'), ('transitivo indireto'), ('intransitivo');
 insert into person_group(person_group) values ('primeira'), ('terceira');
 insert into number_group(number_group) values ('singular'), ('plural');
 insert into gender_group(gender_group) values ('neutro'), ('feminino'), ('masculino');
+insert into adverb_function_type(adverb_function_type) values ('lugar'), ('tempo'), ('afirmacao'), ('intensidade'), ('modo'), ('negacao'), ('duvida');
 insert into word_types(word_type) values ('pronome'),('substantivo'), ('verbo'), ('adjetivo'), ('adverbio'), ('preposicao'), ('artigo');
 
 insert into words(word, word_type_id, person_group_id, number_group_id, gender_group_id)
@@ -115,5 +123,7 @@ values
 ('bom',2,3,1,3), ('bons',2,3,2,3),
 ('estudante',2,null,1,3), ('estudantes',2,null,2,3),
 ('feliz',2,null,1,3), ('felizes',2,null,2,3);
+insert into words(word, word_type_id, adverb_function_type_id, implicit_object) values
+('aqui', 5, 1, false), ('amanhã', 5, 2, false), (', sim', 5, 3, false), ('demais', 5, 4, false), ('de mansinho', 5, 5, false), (', não', 5, 6, false), (', quem sabe?', 5, 7, false);
 
 
