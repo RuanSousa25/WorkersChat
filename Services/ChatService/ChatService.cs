@@ -59,7 +59,11 @@ namespace WorkerTest.Services.ChatService
                         message += " " + predicativo.Word;
                 }
 
-
+                if(rand.Next(4) == 1)
+                {
+                    Words adverbio = await _wordsServices.GetAdverbioAsync();
+                    message += " " + adverbio.Word;
+                }
                 outroPeriodo = rand.Next(4) == 1;
                 message += outroPeriodo ? ". " : ".";
             } while (outroPeriodo);

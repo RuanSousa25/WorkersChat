@@ -66,5 +66,13 @@ namespace WorkerTest.Services.WordsService
             var artigo = artigos[rand.Next(artigos.Count)];
             return artigo;
         }
+
+        public async Task<Words> GetAdverbioAsync()
+        {
+            List<Words> words = await _wordsRepository.GetWordsAsync();
+            Random rand = new();
+            var adverbios = words.Where(w => w.WordType == WordTypes.Adverbio).ToList();
+            return adverbios[rand.Next(adverbios.Count)];
+        }
     }
 }
