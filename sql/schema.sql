@@ -126,4 +126,13 @@ values
 insert into words(word, word_type_id, adverb_function_type_id, implicit_object) values
 ('aqui', 5, 1, false), ('amanhã', 5, 2, false), (', sim', 5, 3, false), ('demais', 5, 4, false), ('de mansinho', 5, 5, false), (', não', 5, 6, false), (', quem sabe?', 5, 7, false);
 
+insert into words(word, word_type_id, gender_group_id, number_group_id)
+values
+('bonite', 4, 1, 1), ('bonites', 4, 1, 2), ('bonita', 4, 2, 1), ('bonitas', 4, 2, 2),
+('bonito', 4, 3, 1), ('bonitos', 4, 3, 2), ('melhor', 4, null, 1), ('melhores', 4, null, 2),
+('pior', 4, null, 1), ('piores', 4, null, 2), ('ruim', 4, null, 1), ('ruins', 4, null, 2),
+('rosa', 4, null, null), ('preto', 4, 3, 1), ('pretos', 4, 3, 2),
+('prete', 4, 1, 1), ('pretes', 4, 1, 2), ('preta', 4, 3, 1), ('pretas', 4, 2, 2),
+('azul', 4, null, 1), ('azuis', 4, null, 2), ('vermelho', 4, 3, 1), ('vermelhos', 4, 3, 2), 
+('vermelha', 4, 2, 1), ('vermelhas', 4, 2, 2), ('vermelhe', 4, 1, 1), ('vermelhes', 4, 1, 2);
 
