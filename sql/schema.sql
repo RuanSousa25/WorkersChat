@@ -69,6 +69,18 @@ create table words(
 	constraint fk_predicative foreign key (predicative_group_id) references predicative_group(id),
 	constraint fk_adverd_function foreign key (adverb_function_type_id) references adverb_function_type(id)
 );
+
+create table patterns (
+	id INT generated always as identity primary key,
+	name TEXT not null,
+	description text
+);
+
+create table pattern_elements(
+	id int generated always as identity primary key,
+	element_type int not null
+);
+
 insert into predicative_group(predicative_group) values ('nenhum'),('verbal'), ('nominal'), ('verbo-nominal');
 insert into transitivity_group(transitivity_group) values ('transitivo direto'), ('transitivo indireto'), ('intransitivo');
 insert into person_group(person_group) values ('primeira'), ('terceira');
@@ -103,6 +115,8 @@ values
 ('faço', 3, 1, 1, 1, 1), ('fazemos', 3, 1, 2, 1, 1), ('faz', 3, 2, 1, 1, 1), ('fazem', 3, 2, 2, 1, 1),
 ('colho', 3, 1, 1, 1, 1), ('colhemos', 3, 1, 2, 1, 1), ('colhe', 3, 2, 1, 1, 1), ('colhem', 3, 2, 2, 1, 1);
 
+
+
 insert into words(word, word_type_id, number_group_id, gender_group_id, artigo_definido)
 values 
 ('a', 7, 1, 2, true), ('as', 7, 2, 2, true),
@@ -125,7 +139,6 @@ values
 ('feliz',2,null,1,3), ('felizes',2,null,2,3);
 insert into words(word, word_type_id, adverb_function_type_id, implicit_object) values
 ('aqui', 5, 1, false), ('amanhã', 5, 2, false), (', sim', 5, 3, false), ('demais', 5, 4, false), ('de mansinho', 5, 5, false), (', não', 5, 6, false), (', quem sabe?', 5, 7, false);
-
 insert into words(word, word_type_id, gender_group_id, number_group_id)
 values
 ('bonite', 4, 1, 1), ('bonites', 4, 1, 2), ('bonita', 4, 2, 1), ('bonitas', 4, 2, 2),
