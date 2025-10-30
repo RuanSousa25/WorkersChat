@@ -94,7 +94,8 @@ values ('eu', 1, 1, 1, null), ('você', 1, 2, 1, null), ('vocês', 1, 2, 2, null
 insert into words(word, word_type_id, number_group_id, gender_group_id) 
 values ('água', 2, 1, 2), ('máquinas', 2, 2, 2), ('humanos', 2, 2, 3), ('matemática', 2, 1, 2), ('computação', 2, 1, 2), ('ciência', 2, 1, 2), ('engenharia', 2, 1, 2), ('vida', 2, 1, 2), ('morte', 2, 1, 2),
 ('morango', 2, 1, 3), ('morangos', 2, 2, 3),('uva', 2, 1, 2), ('uvas', 2, 2, 2),('goiaba', 2, 1, 2), ('goiabas', 2, 2, 2),('manga', 2, 1, 2), ('mangas', 2, 2, 2),
-('filme', 2, 1, 3), ('filmes', 2, 2, 3), ('série', 2, 1, 2), ('séries', 2, 2, 2), ('cinema', 2, 1, 3), ('folhas', 2, 2, 2);
+('filme', 2, 1, 3), ('filmes', 2, 2, 3), ('série', 2, 1, 2), ('séries', 2, 2, 2), ('cinema', 2, 1, 3), ('folhas', 2, 2, 2),
+('jogo', 2, 1, 3), ('jogos', 2, 2, 3), ('software', 2, 1, 3), ('softwares', 2, 2, 3), ('casa', 2, 1, 2), ('casas', 2, 2, 2);
 insert into words(word, word_type_id, person_group_id, number_group_id, transitivity_group_id, predicative_group_id)
 values 
 ('amo', 3, 1, 1, 1, 1), ('amamos', 3, 1, 2, 1, 1),  ('ama', 3, 2, 1, 1, 1),   ('amam', 3, 2, 2, 1, 1), 
@@ -112,8 +113,15 @@ values
 ('como', 3, 1, 1, 1, 1), ('comemos', 3, 1, 2, 1, 1), ('come', 3, 2, 1, 1, 1), ('comem', 3, 2, 2, 1, 1),
 ('gosto', 3, 1, 1, 2, 1), ('gostamos', 3, 1, 2, 2, 1), ('gosta', 3, 2, 1, 2, 1), ('gostam', 3, 2, 2, 2, 1),
 ('assisto', 3, 1, 1, 2, 1), ('assistimos', 3, 1, 2, 2, 1), ('assiste', 3, 2, 1, 2, 1), ('assistem', 3, 2, 2, 2, 1),
+('assisto', 3, 1, 1, 1, 1), ('assistimos', 3, 1, 2, 1, 1), ('assiste', 3, 2, 1, 1, 1), ('assistem', 3, 2, 2, 1, 1),
 ('faço', 3, 1, 1, 1, 1), ('fazemos', 3, 1, 2, 1, 1), ('faz', 3, 2, 1, 1, 1), ('fazem', 3, 2, 2, 1, 1),
-('colho', 3, 1, 1, 1, 1), ('colhemos', 3, 1, 2, 1, 1), ('colhe', 3, 2, 1, 1, 1), ('colhem', 3, 2, 2, 1, 1);
+('colho', 3, 1, 1, 1, 1), ('colhemos', 3, 1, 2, 1, 1), ('colhe', 3, 2, 1, 1, 1), ('colhem', 3, 2, 2, 1, 1),
+('acredito', 3, 1, 1, 2, 1), ('acreditamos', 3, 1, 2, 2, 1), ('acredita', 3, 2, 1, 2, 1), ('acreditam', 3, 2, 2, 2, 1),
+('aprendo', 3, 1, 1, 2, 1), ('aprendemos', 3, 1, 2, 1, 1), ('aprende', 3, 2, 1, 1, 1), ('aprendem', 3, 2, 2, 1, 1),
+('desenvolvo', 3, 1, 1, 1, 1), ('desenvolvemos', 3, 1, 2, 1, 1), ('desenvolve', 3, 2, 1, 1, 1), ('desenvolvem', 3, 2, 2, 1, 1),
+('observo', 3, 1, 1, 1, 1), ('observamos', 3, 1, 2, 1, 1), ('observa', 3, 2, 1, 1, 1), ('observam', 3, 2, 2, 1, 1),
+('jogo', 3, 1, 1, 1, 1), ('jogamos', 3, 1, 2, 1, 1), ('joga', 3, 2, 1, 1, 1), ('jogam', 3, 2, 2, 1, 1),
+('saio', 3, 1, 1, 2, 1), ('saímos', 3, 1, 2, 2, 1), ('sai', 3, 2, 1, 2, 1), ('saem', 3, 2, 2, 2, 1);
 
 
 
