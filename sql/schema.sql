@@ -72,7 +72,7 @@ create table words(
 
 create table patterns (
 	id INT generated always as identity primary key,
-	name TEXT not null,
+	pattern TEXT not null,
 	description text
 );
 
@@ -80,6 +80,16 @@ create table pattern_elements(
 	id int generated always as identity primary key,
 	element_type int not null
 );
+
+insert into patterns(pattern, description) values
+ ('pronome verbo objeto', 'clássico'),
+ ('pronome verbo', 'intransitivo'),
+ ('pronoe verbo objeto adverbio', 'advérbio ao final'),
+ ('pronome verbo objeto, adverbio', 'advérbio ao final com vírgula'),
+ ('adverbio, pronome verbo objeto', 'advérbio ao início com vírgula'),
+ ('pronome verbo adverbio', 'instransitivo com adverbio'),
+  ('pronome verbo, adverbio', 'intransitivo advérbio ao final com vírgula'),
+ ('adverbio, pronome verbo', 'intransitivo advérbio ao início com vírgula');
 
 insert into predicative_group(predicative_group) values ('nenhum'),('verbal'), ('nominal'), ('verbo-nominal');
 insert into transitivity_group(transitivity_group) values ('transitivo direto'), ('transitivo indireto'), ('intransitivo');
